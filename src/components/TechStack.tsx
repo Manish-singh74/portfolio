@@ -11,18 +11,38 @@ import {
   RapierRigidBody,
 } from "@react-three/rapier";
 
-const textureLoader = new THREE.TextureLoader();
-const imageUrls = [
-  "/images/react2.webp",
-  "/images/next2.webp",
-  "/images/node2.webp",
-  "/images/express.webp",
-  "/images/mongo.webp",
-  "/images/mysql.webp",
-  "/images/typescript.webp",
-  "/images/javascript.webp",
+const skills = [
+  "HTML", "CSS", "JS", "Excel", "Python", "Java", 
+  "C", "NumPy", "Pandas", "MySQL", "Power BI"
 ];
-const textures = imageUrls.map((url) => textureLoader.load(url));
+
+function createTextTexture(text: string) {
+  const canvas = document.createElement("canvas");
+  canvas.width = 512;
+  canvas.height = 512;
+  const context = canvas.getContext("2d");
+  if (context) {
+    context.fillStyle = "#ffffff"; // White background
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // Draw a subtle border circle to make it look like a badge
+    context.strokeStyle = "#dddddd";
+    context.lineWidth = 10;
+    context.beginPath();
+    context.arc(256, 256, 240, 0, Math.PI * 2);
+    context.stroke();
+
+    context.font = "bold 70px Arial";
+    context.textAlign = "center";
+    context.textBaseline = "middle";
+    context.fillStyle = "#000000"; // Black text
+    context.fillText(text, canvas.width / 2, canvas.height / 2);
+  }
+  const texture = new THREE.CanvasTexture(canvas);
+  return texture;
+}
+
+const textures = skills.map((skill) => createTextTexture(skill));
 
 const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
 
@@ -169,6 +189,9 @@ const TechStack = () => {
   return (
     <div className="techstack">
       <h2> My Techstack</h2>
+      <p style={{ textAlign: "center", fontSize: "1.2rem", fontWeight: "300", marginBottom: "2rem", color: "var(--light-gray)", position: "relative", zIndex: 10 }}>
+        HTML | CSS | JS | MS Excel | Python | Java | C | NumPy | Pandas | MySQL | Power BI
+      </p>
 
       <Canvas
         shadows

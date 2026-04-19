@@ -6,9 +6,7 @@ const About = () => {
       <div className="about-me">
         <h3 className="title">About Me</h3>
         <p className="para">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quis
-          dolores numquam iusto Ratione earum ducimus autem id iure pariatur
-          dolorum quae maiores.
+          Aspiring Data Analyst with a solid foundation in Excel, SQL, Python, and Java, skilled in data analysis, visualization, and problem-solving. Passionate about transforming complex datasets into actionable insights to support strategic decision-making.
         </p>
       </div>
     </div>
